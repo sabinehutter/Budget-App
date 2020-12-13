@@ -6,7 +6,7 @@
   ## Description
    This application allows you to automatically track your transcations!
 
-   ![Application Entry](https://github.com/sabinehutter/Sweat-Workout-Tracker/blob/main/public/images/Sweat-Landing.png)
+   ![Application Entry](https://github.com/sabinehutter/Budget-App/blob/main/public/icons/budget-app-home.png)
 
    Whene you first launch the application you will be prompted to enter a transaction. You are able to make deposits and withdraws.
       
