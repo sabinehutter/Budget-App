@@ -42,9 +42,9 @@ request.onerror = function (event) {
 
 // saveRecord -> save to indexedBD
 function saveRecord(entry) {
-    const transation = db.transation(['pending'], "readwrite");
+    const transaction = db.transaction(["pending"], "readwrite");
 
-    const storeData = transation.objectStore('pending')
+    const storeData = transaction.objectStore('pending')
 
     storeData.add(entry)
 }
