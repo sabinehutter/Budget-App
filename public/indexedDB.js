@@ -1,6 +1,3 @@
-import {
-    response
-} from "express";
 
 const indexedDB =
     window.indexedDB ||
