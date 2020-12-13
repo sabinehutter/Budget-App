@@ -1,3 +1,5 @@
+import { response } from "express";
+
 const indexedDB = 
 window.indexedDB ||
 window.mozIndexedDB ||
@@ -42,6 +44,32 @@ function saveRecord(entry){
     storeData.add(entry)
 }
 
-        function checkDatabase(){
+function checkDatabase(){
+    const transation = db.transation(['pending'], "readwrite");
 
+    const storeData = transation.objectStore('pending')
+
+    const AllStored = storeData.getAll();
+
+    AllStored.onsuccess = function(){
+        if (AllStored.result.length > 0){
+            fetch("/api/transaction/bulk", {
+                method : "POST", 
+                body : JSON.stringify(AllStored.result),
+                headers: {
+                    Accept: "application/json, text/plain, */*",
+                    "Content-Type": "application/json"
+                  }
+            }).then(response => response.json())
+            .then(()=> {
+                const transation = db.transation(['pending'], "readwrite");
+
+                const storeData = transation.objectStore('pending')
+
+                storeData.clear();
+            })
         }
+    }
+        }
+
+    window.addEventListener("online", checkDatabase);
